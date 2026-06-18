@@ -1,0 +1,6 @@
+Coloca aquí una foto de portada (opcional) para el fondo del hero, por ejemplo "portada.jpg".
+
+Luego, en js/config.js, escribe la ruta en la propiedad "heroImage", por ejemplo:
+  heroImage: "assets/images/couple/portada.jpg"
+
+Si dejas heroImage como "" (vacío), se usa el fondo ilustrado dorado/vino por defecto.

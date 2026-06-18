@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gualberto &amp; Jhenny — Nos Casamos</title>
+<meta name="description" content="Invitación de matrimonio de Gualberto y Jhenny — Sucre, Bolivia, julio 2026." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Yellowtail&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/reset.css" />
+<link rel="stylesheet" href="css/variables.css" />
+<link rel="stylesheet" href="css/animations.css" />
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<!-- ============================= NAVBAR ============================= -->
+<nav class="navbar" id="navbar">
+  <span class="navbar-brand" id="nav-brand">Gualberto &amp; Jhenny</span>
+  <div class="navbar-links">
+    <a href="#itinerario">Itinerario</a>
+    <a href="#padrinos">Padrinos</a>
+    <a href="#galeria">Galería</a>
+    <a href="#ubicacion">Ubicación</a>
+    <a href="#confirmar" class="btn btn-primary btn-small">Confirmar</a>
+  </div>
+</nav>
+
+<!-- ============================= HERO ============================= -->
+<header class="hero">
+  <div class="hero-petals"></div>
+  <div class="hero-rings" id="hero-rings"></div>
+  <span class="hero-eyebrow hero-fade-up">Nos casamos</span>
+  <h1 class="hero-title hero-fade-up" id="hero-names" style="animation-delay:.15s"></h1>
+  <p class="hero-date hero-fade-up" id="hero-date" style="animation-delay:.3s"></p>
+  <p class="hero-place hero-fade-up" id="hero-place" style="animation-delay:.4s"></p>
+  <a href="#bendicion" class="scroll-cue">
+    <span>Desliza</span>
+    <span style="width:18px;height:18px;display:inline-block;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 4v16M5 13l7 7 7-7"/></svg>
+    </span>
+  </a>
+</header>
+
+<!-- ============================= QUOTE ============================= -->
+<section class="section quote-section" id="bendicion">
+  <div class="container container--narrow reveal">
+    <span class="quote-mark">&ldquo;</span>
+    <p class="quote-text" id="blessing-quote"></p>
+  </div>
+</section>
+
+<!-- ============================= INTRO ============================= -->
+<section class="section intro-section">
+  <div class="container container--narrow reveal">
+    <span class="eyebrow" id="intro-eyebrow"></span>
+    <p class="intro-text" id="intro-text"></p>
+  </div>
+</section>
+
+<!-- ============================= PADRES ============================= -->
+<section class="section parents-section">
+  <div class="container">
+    <h2 class="section-title reveal">Con la bendición de</h2>
+    <div class="ornament-divider reveal">
+      <span class="line"></span>
+      <span style="color:var(--c-gold)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="2.4"/><path d="M12 2c1.8 2 1.8 4.6 0 6.5C10.2 6.6 10.2 4 12 2Z"/><path d="M12 22c1.8-2 1.8-4.6 0-6.5C10.2 17.4 10.2 20 12 22Z"/><path d="M2 12c2-1.8 4.6-1.8 6.5 0C6.6 13.8 4 13.8 2 12Z"/><path d="M22 12c-2 1.8-4.6 1.8-6.5 0 1.9-1.8 4.5-1.8 6.5 0Z"/></svg>
+      </span>
+      <span class="line"></span>
+    </div>
+    <div class="parents-grid">
+      <div class="parents-col reveal" id="parents-col-1"></div>
+      <div class="parents-col reveal reveal-delay-1" id="parents-col-2"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= COUNTDOWN ============================= -->
+<section class="section countdown-section">
+  <div class="container">
+    <span class="eyebrow reveal">Falta muy poco</span>
+    <h2 class="section-title reveal">Cuenta regresiva</h2>
+    <div class="countdown-grid reveal-scale">
+      <div class="countdown-unit">
+        <div class="countdown-number" id="cd-days">00</div>
+        <div class="countdown-label">Días</div>
+      </div>
+      <div class="countdown-unit">
+        <div class="countdown-number" id="cd-hours">00</div>
+        <div class="countdown-label">Horas</div>
+      </div>
+      <div class="countdown-unit">
+        <div class="countdown-number" id="cd-minutes">00</div>
+        <div class="countdown-label">Minutos</div>
+      </div>
+      <div class="countdown-unit">
+        <div class="countdown-number" id="cd-seconds">00</div>
+        <div class="countdown-label">Segundos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= ITINERARIO / TIMELINE ============================= -->
+<section class="section timeline-section" id="itinerario">
+  <div class="container">
+    <span class="eyebrow reveal" style="text-align:center;display:block">Dos días para celebrar</span>
+    <h2 class="section-title reveal">Nuestra celebración</h2>
+    <p class="section-subtitle reveal">
+      Vívelo con nosotros en dos momentos llenos de fe, familia y alegría.
+    </p>
+    <div class="timeline" id="timeline-wrap"></div>
+  </div>
+</section>
+
+<!-- ============================= PADRINOS ============================= -->
+<section class="section godparents-section" id="padrinos">
+  <div class="container">
+    <span class="eyebrow reveal" style="text-align:center;display:block">Quienes nos acompañan</span>
+    <h2 class="section-title reveal">Nuestros padrinos</h2>
+    <div class="godparents-grid" id="godparents-wrap"></div>
+  </div>
+</section>
+
+<!-- ============================= GALERÍA ============================= -->
+<section class="section gallery-section" id="galeria">
+  <div class="container">
+    <span class="eyebrow reveal" style="text-align:center;display:block">Recuerdos</span>
+    <h2 class="section-title reveal">Nuestros momentos</h2>
+    <div class="gallery-grid" id="gallery-wrap"></div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" aria-label="Cerrar">&times;</button>
+  <img id="lightbox-img" alt="" />
+</div>
+
+<!-- ============================= UBICACIÓN ============================= -->
+<section class="section location-section" id="ubicacion">
+  <div class="container">
+    <span class="eyebrow reveal" style="text-align:center;display:block">¿Cómo llegar?</span>
+    <h2 class="section-title reveal">Ubicación</h2>
+    <p class="section-subtitle reveal">Toca el mapa o el botón para abrir la ruta directamente en Google Maps.</p>
+    <div class="location-grid" id="location-wrap"></div>
+  </div>
+</section>
+
+<!-- ============================= RSVP ============================= -->
+<section class="section rsvp-section" id="confirmar">
+  <div class="container">
+    <span class="eyebrow reveal" style="text-align:center;display:block">Tu presencia es nuestro mejor regalo</span>
+    <h2 class="section-title reveal">Confirma tu asistencia</h2>
+    <p class="section-subtitle reveal">Cuéntanos si nos acompañarás, nos hará muy felices saberlo.</p>
+
+    <form class="rsvp-form reveal" id="rsvp-form">
+      <div class="form-row">
+        <label for="rsvp-name">Tu nombre</label>
+        <input id="rsvp-name" name="name" type="text" placeholder="Nombre y apellido" required />
+      </div>
+
+      <div class="form-row">
+        <label>¿Asistirás?</label>
+        <div class="attendance-toggle">
+          <label class="attendance-option">
+            <input type="radio" name="attending" value="yes" />
+            Sí, asistiré
+          </label>
+          <label class="attendance-option">
+            <input type="radio" name="attending" value="no" />
+            No podré ir
+          </label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="rsvp-guests">Número de acompañantes</label>
+        <input id="rsvp-guests" name="guests" type="number" min="0" placeholder="0" />
+      </div>
+
+      <div class="form-row">
+        <label for="rsvp-message">Mensaje para los novios (opcional)</label>
+        <textarea id="rsvp-message" name="message" rows="3" placeholder="Escribe unas palabras..."></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary rsvp-submit">
+        <span style="width:18px;height:18px;display:inline-block;">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1-.2.2-.3.2-.6.1-1.7-.7-2.8-1.6-3.7-3.1-.2-.4 0-.5.2-.7.2-.2.5-.5.6-.7.1-.2.1-.4 0-.6-.1-.2-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.2.2 1.6 2.5 4 3.4 2 .8 2.4.7 2.8.6.4-.1 1.7-.7 1.9-1.3.2-.6.2-1.1.2-1.2 0-.1-.2-.2-.4-.3Z"/><path d="M12 2a10 10 0 0 0-8.6 15.2L2 22l4.9-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>
+        </span>
+        Enviar confirmación por WhatsApp
+      </button>
+      <p class="rsvp-deadline" id="rsvp-deadline"></p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================= FOOTER ============================= -->
+<footer class="site-footer">
+  <div class="footer-rings">
+    <svg viewBox="0 0 160 90" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="62" cy="45" r="34" fill="none" stroke="var(--c-gold)" stroke-width="4"/>
+      <circle cx="98" cy="45" r="34" fill="none" stroke="var(--c-gold-light)" stroke-width="4"/>
+      <path d="M80 38c-3-6-12-6-13 1-1 6 6 11 13 16 7-5 14-10 13-16-1-7-10-7-13-1Z" fill="var(--c-gold)"/>
+    </svg>
+  </div>
+  <p class="footer-names" id="footer-names"></p>
+  <p class="footer-message">Con todo nuestro amor, te esperamos.</p>
+  <p class="footer-location">Sucre, Bolivia · Julio de 2026</p>
+</footer>
+
+<!-- ============================= STICKY MOBILE CTA ============================= -->
+<a href="#confirmar" class="btn btn-primary sticky-rsvp pulse">Confirmar asistencia</a>
+
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

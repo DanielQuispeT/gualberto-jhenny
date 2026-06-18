@@ -1,0 +1,5 @@
+Coloca aquí tus fotos de la galería (foto-1.jpg, foto-2.jpg, foto-3.jpg, foto-4.jpg, foto-5.jpg, foto-6.jpg)
+o cualquier nombre que luego referencies en js/config.js dentro de la sección "gallery".
+
+Mientras no agregues una foto real, el sitio muestra automáticamente un marco decorativo dorado —
+nunca se ve roto ni vacío.
