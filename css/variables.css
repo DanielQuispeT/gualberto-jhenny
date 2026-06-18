@@ -1,20 +1,25 @@
 :root {
-  /* Paleta Editorial */
-  --bg-color: #f7f5f2; /* Marfil / Alabaster */
-  --bg-light: #ffffff; /* Blanco puro */
-  --bg-dark: #181818; /* Negro suave */
+  /* Paleta Elegante: Blancos, Huesos, Marfiles y Dorados */
+  --bg-bone: #fbf9f6; /* Hueso muy claro (Fondo principal) */
+  --bg-ivory: #f3efe6; /* Marfil sutil (Para secciones intercaladas) */
+  --bg-white: #ffffff; /* Blanco puro (Para tarjetas) */
 
-  --text-main: #1c1c1c; /* Carbón oscuro */
-  --text-muted: #666666; /* Gris para subtítulos */
-  --text-white: #f7f5f2;
+  --c-gold: #d4af37; /* Dorado brillante */
+  --c-gold-light: #f3e5ab; /* Dorado pálido / Vainilla */
+  --c-gold-dark: #a67c00; /* Dorado oscuro (Para textos legibles) */
 
-  --border-color: #d1cdd1; /* Gris muy sutil para líneas */
+  --text-main: #4a4036; /* Café muy oscuro / Gris cálido */
+  --text-muted: #8c7a6b; /* Café claro para subtítulos */
 
   /* Tipografía */
   --font-display: "Cormorant Garamond", serif;
   --font-sans: "Montserrat", sans-serif;
 
   /* Estructura */
-  --container-w: 1200px;
-  --container-narrow: 700px;
+  --container-w: 1100px;
+  --container-narrow: 750px;
+
+  /* Sombras y bordes dorados */
+  --shadow-gold: 0 8px 32px rgba(212, 175, 55, 0.15);
+  --border-radius: 12px;
 }
