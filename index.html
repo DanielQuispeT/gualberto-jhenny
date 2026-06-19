@@ -7,13 +7,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
 
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/variables.css" />
-    <link rel="stylesheet" href="css/animations.css" />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
@@ -21,13 +20,16 @@
       <a href="#rsvp" class="btn-gold pulse-btn">Confirmar Asistencia</a>
     </nav>
 
-    <!-- HERO ELEGANTE -->
+    <!-- HERO EDITORIAL (Fondo refinado con marco y monograma) -->
     <header class="hero">
       <div class="hero-bg" id="hero-bg"></div>
-      <div class="hero-overlay"></div>
+      <div class="hero-frame"></div>
       <div class="hero-particles" id="particles"></div>
 
       <div class="hero-content fade-in">
+        <!-- Monograma elegante -->
+        <div class="hero-monogram">G & J</div>
+
         <p class="hero-subtitle text-gold" id="hero-date-top"></p>
         <h1 class="hero-title text-gradient">
           <span id="hero-groom"></span>
@@ -36,16 +38,16 @@
         </h1>
         <p class="hero-location" id="hero-location"></p>
       </div>
-
-      <!-- Detalle decorativo abajo -->
-      <div class="hero-bottom-wave"></div>
     </header>
 
-    <!-- CUENTA REGRESIVA BONITA -->
-    <section class="section bg-bone" style="padding-top: 2rem">
-      <div class="container reveal text-center">
-        <h2 class="script-title text-gold" style="font-size: 2.5rem">
-          Falta muy poco
+    <!-- CUENTA REGRESIVA (Siempre en una fila) -->
+    <section class="section bg-bone" style="padding: 6vh 0">
+      <div class="container text-center">
+        <h2
+          class="script-title text-gold"
+          style="font-size: 2.2rem; margin-bottom: 1.5rem"
+        >
+          Cada segundo nos acerca más...
         </h2>
         <div class="countdown-beautiful" id="countdown">
           <div class="cd-box">
@@ -58,7 +60,7 @@
           </div>
           <div class="cd-box">
             <span id="cd-minutes">00</span>
-            <p>Minutos</p>
+            <p>Min</p>
           </div>
           <div class="cd-box">
             <span id="cd-seconds">00</span>
@@ -68,37 +70,50 @@
       </div>
     </section>
 
-    <!-- PADRES E INTRO -->
+    <!-- BENDICIÓN Y PADRES -->
     <section class="section bg-ivory">
       <div class="container container-narrow reveal text-center">
         <div class="gold-ornament">✦</div>
-        <h2 class="display-title text-gradient">Con la bendición de Dios</h2>
-        <p class="body-text" id="blessing-text" style="margin-bottom: 4rem"></p>
+        <h2 class="display-title text-gradient" style="margin-bottom: 1.5rem">
+          Con la bendición de Dios
+        </h2>
+        <p
+          class="body-text"
+          id="blessing-text"
+          style="margin-bottom: 4rem; font-style: italic"
+        ></p>
 
-        <p class="overline text-gold">Nuestros Padres</p>
-        <div class="parents-grid" id="parents-grid"></div>
+        <div class="parents-layout" id="parents-container">
+          <!-- Se renderiza desde JS -->
+        </div>
       </div>
     </section>
 
-    <!-- ITINERARIO AGRUPADO POR DÍAS -->
+    <!-- ITINERARIO MEJORADO -->
     <section class="section bg-bone" id="itinerario">
       <div class="container reveal">
         <div class="section-header text-center">
           <div class="gold-ornament">✦</div>
           <h2 class="display-title text-gradient">Nuestra Celebración</h2>
+          <p class="body-text" style="margin-bottom: 3rem">
+            Queremos compartir cada instante de este viaje contigo
+          </p>
         </div>
         <div class="timeline-container" id="timeline-grid"></div>
       </div>
     </section>
 
-    <!-- GALERÍA A 3 COLUMNAS -->
+    <!-- GALERÍA DE FOTOS (Con Lightbox) -->
     <section class="section bg-ivory" id="galeria">
       <div class="container reveal text-center">
         <div class="gold-ornament">✦</div>
-        <h2 class="display-title text-gradient" style="margin-bottom: 3rem">
-          Nuestros Momentos
+        <h2 class="display-title text-gradient" style="margin-bottom: 1rem">
+          Nuestro Amor
         </h2>
-        <div class="photo-gallery-3" id="photo-gallery"></div>
+        <p class="body-text" style="margin-bottom: 3rem">
+          Un pequeño destello de nuestra historia juntos
+        </p>
+        <div class="photo-gallery" id="photo-gallery"></div>
       </div>
     </section>
 
@@ -113,14 +128,25 @@
       </div>
     </section>
 
-    <!-- FORMULARIO RSVP SIMPLE -->
+    <!-- RSVP MEJORADO -->
     <section class="section bg-ivory" id="rsvp">
       <div class="container container-narrow reveal text-center">
         <div class="rsvp-card">
           <div class="gold-ornament">✦</div>
-          <h2 class="display-title text-gradient">Confirma tu Asistencia</h2>
-          <p class="body-text" style="margin-bottom: 3rem">
-            Por favor, confírmanos antes del
+          <h2 class="display-title text-gradient" style="margin-bottom: 1rem">
+            Confirma tu Asistencia
+          </h2>
+          <p
+            class="body-text"
+            style="
+              margin-bottom: 2.5rem;
+              max-width: 550px;
+              margin-left: auto;
+              margin-right: auto;
+            "
+          >
+            Tu presencia hará nuestro día aún más especial. Por favor,
+            confírmanos antes del
             <strong id="rsvp-date" class="text-gold"></strong>.
           </p>
 
@@ -136,7 +162,7 @@
             </div>
 
             <div class="form-group">
-              <label>Acompañantes Extras (Opcional)</label>
+              <label>Acompañantes Extras</label>
               <input
                 type="number"
                 name="guests"
@@ -144,17 +170,9 @@
                 min="0"
                 max="10"
               />
-              <small
-                style="
-                  display: block;
-                  text-align: left;
-                  color: var(--text-muted);
-                  font-size: 0.8rem;
-                  margin-top: 5px;
-                "
+              <span class="form-help"
+                >Déjalo en blanco o en 0 si asistes individualmente.</span
               >
-                Déjalo vacío si asistes tú solo.
-              </small>
             </div>
 
             <div class="form-group">
@@ -162,26 +180,90 @@
               <textarea
                 name="message"
                 rows="3"
-                placeholder="Escribe aquí tus felicitaciones..."
+                placeholder="Escribe tus buenos deseos aquí..."
               ></textarea>
             </div>
 
             <button type="submit" class="btn-gold-solid pulse-btn">
-              Enviar Confirmación por WhatsApp
+              Confirmar asistencia
             </button>
           </form>
         </div>
       </div>
     </section>
 
+    <!-- FOOTER ELEGANTE -->
     <footer class="footer text-center bg-bone">
+      <div class="footer-ornament">
+        <svg viewBox="0 0 100 20" width="80" height="20" fill="var(--c-gold)">
+          <path
+            d="M10 10 C 30 2, 70 2, 90 10 C 70 18, 30 18, 10 10 Z"
+            opacity="0.1"
+          />
+          <circle cx="50" cy="10" r="3" fill="var(--c-gold)" />
+          <line
+            x1="15"
+            y1="10"
+            x2="40"
+            y2="10"
+            stroke="var(--c-gold)"
+            stroke-width="0.5"
+          />
+          <line
+            x1="60"
+            y1="10"
+            x2="85"
+            y2="10"
+            stroke="var(--c-gold)"
+            stroke-width="0.5"
+          />
+        </svg>
+      </div>
       <p
         class="script-title text-gold"
         id="footer-names"
-        style="font-size: 2rem"
+        style="font-size: 2.4rem; margin-bottom: 0.5rem"
       ></p>
-      <p class="footer-note text-muted">Sucre, Bolivia · 2026</p>
+      <p class="footer-meta">Nuestra nueva aventura comienza aquí</p>
+      <p class="footer-meta">Sucre, Bolivia</p>
+      <p class="footer-date">2026</p>
     </footer>
+
+    <!-- VISOR DE IMÁGENES (LIGHTBOX) -->
+    <div class="lightbox" id="lightbox">
+      <span class="lightbox-close">&times;</span>
+      <img class="lightbox-content" id="lightbox-img" alt="Zoom Especial" />
+    </div>
+
+    <!-- REPRODUCTOR FLOTANTE -->
+    <button
+      class="music-btn pulse-btn"
+      id="music-btn"
+      aria-label="Reproducir música"
+    >
+      <svg
+        id="music-icon-play"
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        fill="currentColor"
+      >
+        <path d="M8 5v14l11-7z" />
+      </svg>
+      <svg
+        id="music-icon-pause"
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        fill="currentColor"
+        style="display: none"
+      >
+        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+      </svg>
+    </button>
+    <audio id="bg-music" loop>
+      <source src="" type="audio/mpeg" />
+    </audio>
 
     <script src="js/config.js"></script>
     <script src="js/main.js"></script>

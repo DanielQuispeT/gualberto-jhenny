@@ -3,7 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 1. Fondos
   const heroBg = document.getElementById("hero-bg");
-  if (cfg.heroImage) heroBg.style.backgroundImage = `url('${cfg.heroImage}')`;
+  if (cfg.heroImage && cfg.heroImage !== "") {
+    heroBg.style.backgroundImage = `url('${cfg.heroImage}')`;
+    heroBg.style.backgroundSize = "cover";
+  }
 
   // 2. Textos Básicos
   document.getElementById("hero-groom").textContent = cfg.couple.groomName;
@@ -14,13 +17,24 @@ document.addEventListener("DOMContentLoaded", () => {
     `${cfg.couple.groomName} & ${cfg.couple.brideName}`;
   document.getElementById("blessing-text").textContent = cfg.blessingQuote;
 
-  // 3. Padres
-  const parentsGrid = document.getElementById("parents-grid");
-  const buildParents = (list) =>
-    list.map((p) => `<p class="parent-name">${p.name}</p>`).join("");
-  parentsGrid.innerHTML = `<div>${buildParents(cfg.parents.columnOne)}</div><div>${buildParents(cfg.parents.columnTwo)}</div>`;
+  // 3. Padres (Estructurado de manera asimétrica)
+  const parentsContainer = document.getElementById("parents-container");
+  parentsContainer.innerHTML = `
+    <div class="parents-column reveal">
+      <span class="overline">${cfg.parents.groomLabel}</span>
+      <p class="parent-name">${cfg.parents.groomMother}</p>
+    </div>
+    <div class="parents-divider reveal">
+      <div class="gold-ornament" style="font-size: 1rem;">✦</div>
+    </div>
+    <div class="parents-column reveal">
+      <span class="overline">${cfg.parents.brideLabel}</span>
+      <p class="parent-name">${cfg.parents.brideFather}</p>
+      <p class="parent-name">${cfg.parents.brideMother}</p>
+    </div>
+  `;
 
-  // 4. Itinerario (AGRUPADO POR DÍAS)
+  // 4. Itinerario ( timeline vertical )
   const timelineGrid = document.getElementById("timeline-grid");
   timelineGrid.innerHTML = cfg.timeline
     .map(
@@ -31,10 +45,10 @@ document.addEventListener("DOMContentLoaded", () => {
         .map(
           (ev) => `
         <div class="event-card">
-          <p class="overline" style="margin-bottom: 5px;">${ev.time}</p>
+          <span class="overline" style="margin-bottom: 4px;">${ev.time}</span>
           <h3 class="text-gold">${ev.title}</h3>
-          <p class="body-text" style="color:var(--text-main); font-weight:500;">${ev.place}</p>
-          <p class="body-text" style="font-size:0.95rem; margin-top:5px;">${ev.description}</p>
+          <p class="body-text" style="color:var(--text-main); font-weight:500; font-size: 1rem;">${ev.place}</p>
+          <p class="body-text" style="font-size:0.9rem; margin-top:5px; line-height: 1.6;">${ev.description}</p>
           <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ev.mapQuery)}" target="_blank" class="btn-outline-gold">Ver Ubicación</a>
         </div>
       `,
@@ -45,31 +59,56 @@ document.addEventListener("DOMContentLoaded", () => {
     )
     .join("");
 
-  // 5. Galería de Fotos (3 columnas)
+  // 5. Galería de Fotos (Efecto Cuadro con gancho para Lightbox)
   const photoGallery = document.getElementById("photo-gallery");
   photoGallery.innerHTML = cfg.gallery
     .map(
       (foto) => `
-    <div class="gallery-item reveal">
-      <img src="${foto.src}" alt="Momento especial" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNGM0VGRTYiLz48L3N2Zz4='">
+    <div class="gallery-item reveal" data-src="${foto.src}">
+      <div class="gallery-img-wrap">
+        <img src="${foto.src}" alt="Momento especial" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNGM0VGRTYiLz48L3N2Zz4='">
+      </div>
     </div>
   `,
     )
     .join("");
 
-  // 6. Padrinos
+  // Funcionalidad Lightbox
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const lightboxClose = document.querySelector(".lightbox-close");
+
+  document.querySelectorAll(".gallery-item").forEach((item) => {
+    item.addEventListener("click", () => {
+      const src = item.getAttribute("data-src");
+      lightboxImg.src = src;
+      lightbox.style.display = "block";
+    });
+  });
+
+  lightboxClose.addEventListener("click", () => {
+    lightbox.style.display = "none";
+  });
+
+  lightbox.addEventListener("click", (e) => {
+    if (e.target !== lightboxImg) {
+      lightbox.style.display = "none";
+    }
+  });
+
+  // 6. Padrinos (Estructura responsiva adaptable)
   document.getElementById("godparents-grid").innerHTML = cfg.godparents
     .map(
       (g) => `
-    <div style="margin-bottom: 2.5rem;" class="reveal">
-      <p class="overline">${g.group}</p>
-      ${g.members.map((m) => `<p class="parent-name">${m}</p>`).join("")}
+    <div class="godparents-block reveal">
+      <span class="overline">${g.group}</span>
+      ${g.members.map((m) => `<p class="parent-name" style="font-size: 1.5rem;">${m}</p>`).join("")}
     </div>
   `,
     )
     .join("");
 
-  // 7. FORMULARIO RSVP (Simple como pediste)
+  // 7. Formulario RSVP
   document.getElementById("rsvp-date").textContent = cfg.rsvp.deadline;
   const form = document.getElementById("rsvp-form");
 
@@ -79,29 +118,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const guestsInput = form.elements.guests.value.trim();
     const msg = form.elements.message.value.trim();
 
-    // Lógica para acompañantes
     const guestsNum = parseInt(guestsInput) || 0;
-
     let text = `¡Hola! Soy ${name}, `;
     if (guestsNum > 0) {
-      text += `asistiré con ${guestsNum} persona(s) más.`;
+      text += `asistiré a su boda con ${guestsNum} persona(s) adicional(es).`;
     } else {
-      text += `asistiré yo solo/a.`;
+      text += `asistiré de forma individual.`;
     }
 
-    if (msg !== "") {
-      // Dejamos espacios como pediste para la felicitación
-      text += `\n\n${msg}`;
-    }
-
+    if (msg !== "") text += `\n\n"${msg}"`;
     window.open(
       `https://wa.me/${cfg.rsvp.whatsappNumber}?text=${encodeURIComponent(text)}`,
     );
   });
 
-  // 8. Cuenta Regresiva Bonita
+  // 8. Cuenta Regresiva
   const target = new Date(cfg.countdownTarget).getTime();
-  setInterval(() => {
+  const updateCountdown = () => {
     const diff = Math.max(0, target - Date.now());
     document.getElementById("cd-days").textContent = String(
       Math.floor(diff / 86400000),
@@ -115,35 +148,73 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("cd-seconds").textContent = String(
       Math.floor((diff % 60000) / 1000),
     ).padStart(2, "0");
-  }, 1000);
+  };
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
 
-  // 9. Animación Mágica Dorada en el Hero
+  // 9. Partículas Doradas Estilo Polvo de Hadas
   const container = document.getElementById("particles");
-  for (let i = 0; i < 30; i++) {
+  for (let i = 0; i < 25; i++) {
     let p = document.createElement("div");
     p.style.position = "absolute";
-    p.style.width = Math.random() * 5 + 2 + "px";
+    p.style.width = Math.random() * 3 + 1.5 + "px";
     p.style.height = p.style.width;
     p.style.backgroundColor = "#D4AF37";
     p.style.borderRadius = "50%";
-    p.style.opacity = Math.random();
+    p.style.opacity = Math.random() * 0.7 + 0.3;
     p.style.left = Math.random() * 100 + "%";
     p.style.top = Math.random() * 100 + "%";
-    p.style.animation = `float ${Math.random() * 4 + 3}s ease-in-out infinite alternate`;
+    p.style.animation = `float ${Math.random() * 5 + 4}s ease-in-out infinite alternate`;
     container.appendChild(p);
   }
 
-  // 10. Animación al scrollear
+  // 10. Reproductor de Música
+  const musicBtn = document.getElementById("music-btn");
+  const bgMusic = document.getElementById("bg-music");
+  const iconPlay = document.getElementById("music-icon-play");
+  const iconPause = document.getElementById("music-icon-pause");
+
+  if (cfg.musicFile && cfg.musicFile !== "") {
+    bgMusic.src = cfg.musicFile;
+    musicBtn.addEventListener("click", () => {
+      if (bgMusic.paused) {
+        bgMusic
+          .play()
+          .then(() => {
+            iconPlay.style.display = "none";
+            iconPause.style.display = "block";
+            musicBtn.classList.add("playing");
+          })
+          .catch((err) =>
+            console.log(
+              "La reproducción automática requiere interacción previa.",
+            ),
+          );
+      } else {
+        bgMusic.pause();
+        iconPlay.style.display = "block";
+        iconPause.style.display = "none";
+        musicBtn.classList.remove("playing");
+      }
+    });
+  } else {
+    musicBtn.style.display = "none";
+  }
+
+  // 11. Animación suave al hacer Scroll
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
+          setTimeout(() => {
+            entry.target.classList.add("is-visible");
+          }, 50);
           observer.unobserve(entry.target);
         }
       });
     },
     { threshold: 0.1 },
   );
+
   document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 });
