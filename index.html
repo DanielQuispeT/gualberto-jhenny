@@ -11,6 +11,7 @@
       rel="stylesheet"
     />
 
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.ico" />
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/variables.css" />
     <link rel="stylesheet" href="css/styles.css" />
@@ -235,32 +236,48 @@
       <img class="lightbox-content" id="lightbox-img" alt="Zoom Especial" />
     </div>
 
-    <!-- REPRODUCTOR FLOTANTE -->
+    <!-- BOTÓN DE MÚSICA INTELIGENTE (Music Pill Widget) -->
     <button
       class="music-btn pulse-btn"
       id="music-btn"
       aria-label="Reproducir música"
     >
-      <svg
-        id="music-icon-play"
-        viewBox="0 0 24 24"
-        width="24"
-        height="24"
-        fill="currentColor"
-      >
-        <path d="M8 5v14l11-7z" />
-      </svg>
-      <svg
-        id="music-icon-pause"
-        viewBox="0 0 24 24"
-        width="24"
-        height="24"
-        fill="currentColor"
-        style="display: none"
-      >
-        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
-      </svg>
+      <div class="music-btn-content">
+        <!-- Icono Play -->
+        <svg
+          id="music-icon-play"
+          viewBox="0 0 24 24"
+          width="22"
+          height="22"
+          fill="currentColor"
+        >
+          <path d="M8 5v14l11-7z" />
+        </svg>
+
+        <!-- Icono Pause -->
+        <svg
+          id="music-icon-pause"
+          viewBox="0 0 24 24"
+          width="20"
+          height="20"
+          fill="currentColor"
+          style="display: none"
+        >
+          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+        </svg>
+
+        <!-- Ecualizador e Info integrada -->
+        <div class="music-btn-playing-info">
+          <span class="music-mini-text">Música</span>
+          <div class="visualizer mini">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+        </div>
+      </div>
     </button>
+
     <audio id="bg-music" loop>
       <source src="" type="audio/mpeg" />
     </audio>

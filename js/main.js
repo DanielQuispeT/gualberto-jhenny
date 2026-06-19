@@ -34,25 +34,49 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
   `;
 
-  // 4. Itinerario ( timeline vertical )
+  // 4. Itinerario ( timeline vertical con Google Maps y Google Calendar )
   const timelineGrid = document.getElementById("timeline-grid");
+
+  // Función interna para generar la URL de Google Calendar
+  const makeCalendarUrl = (ev) => {
+    const title = `${ev.title} — ${cfg.couple.groomName} & ${cfg.couple.brideName}`;
+    const details = `${ev.description}\n\nLugar: ${ev.place}`;
+    const location = ev.place;
+    return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${ev.calendarDateStart}/${ev.calendarDateEnd}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}&ctz=America/La_Paz`;
+  };
+
   timelineGrid.innerHTML = cfg.timeline
     .map(
       (day) => `
     <div class="day-block reveal">
       <div class="day-title">${day.dayTitle}</div>
       ${day.events
-        .map(
-          (ev) => `
-        <div class="event-card">
-          <span class="overline" style="margin-bottom: 4px;">${ev.time}</span>
-          <h3 class="text-gold">${ev.title}</h3>
-          <p class="body-text" style="color:var(--text-main); font-weight:500; font-size: 1rem;">${ev.place}</p>
-          <p class="body-text" style="font-size:0.9rem; margin-top:5px; line-height: 1.6;">${ev.description}</p>
-          <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ev.mapQuery)}" target="_blank" class="btn-outline-gold">Ver Ubicación</a>
-        </div>
-      `,
-        )
+        .map((ev) => {
+          // Si hay coordenadas las usamos, de lo contrario cae en modo texto de búsqueda
+          const mapUrl = ev.coords
+            ? `https://www.google.com/maps/search/?api=1&query=${ev.coords}`
+            : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ev.place + ", Sucre, Bolivia")}`;
+
+          const calendarUrl = makeCalendarUrl(ev);
+
+          return `
+              <div class="event-card">
+                <span class="overline" style="margin-bottom: 4px;">${ev.time}</span>
+                <h3 class="text-gold">${ev.title}</h3>
+                <p class="body-text" style="color:var(--text-main); font-weight:500; font-size: 1rem;">${ev.place}</p>
+                <p class="body-text" style="font-size:0.9rem; margin-top:5px; line-height: 1.6;">${ev.description}</p>
+                
+                <div class="event-actions">
+                  <a href="${mapUrl}" target="_blank" class="btn-outline-gold">
+                    Ver Ubicación
+                  </a>
+                  <a href="${calendarUrl}" target="_blank" class="btn-outline-gold secondary">
+                    Agendar Evento
+                  </a>
+                </div>
+              </div>
+            `;
+        })
         .join("")}
     </div>
   `,
@@ -168,7 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
     container.appendChild(p);
   }
 
-  // 10. Reproductor de Música
+  // 10. REPRODUCTOR DE MÚSICA INTELIGENTE (Music Pill Widget)
   const musicBtn = document.getElementById("music-btn");
   const bgMusic = document.getElementById("bg-music");
   const iconPlay = document.getElementById("music-icon-play");
@@ -176,6 +200,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (cfg.musicFile && cfg.musicFile !== "") {
     bgMusic.src = cfg.musicFile;
+
     musicBtn.addEventListener("click", () => {
       if (bgMusic.paused) {
         bgMusic
@@ -183,18 +208,16 @@ document.addEventListener("DOMContentLoaded", () => {
           .then(() => {
             iconPlay.style.display = "none";
             iconPause.style.display = "block";
-            musicBtn.classList.add("playing");
+            musicBtn.classList.add("playing"); // Esto activa la expansión en CSS automáticamente
           })
           .catch((err) =>
-            console.log(
-              "La reproducción automática requiere interacción previa.",
-            ),
+            console.log("La reproducción requiere interacción del usuario."),
           );
       } else {
         bgMusic.pause();
         iconPlay.style.display = "block";
         iconPause.style.display = "none";
-        musicBtn.classList.remove("playing");
+        musicBtn.classList.remove("playing"); // Vuelve a su tamaño circular
       }
     });
   } else {
