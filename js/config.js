@@ -4,7 +4,8 @@ const WEDDING_CONFIG = {
     brideName: "Jhenny",
     weddingCity: "Sucre, Bolivia",
   },
-  dateAndLocation: "18 y 19 de Julio, 2026",
+  // Actualizado para incluir el lunes 20 de forma oficial
+  dateAndLocation: "18, 19 y 20 de Julio, 2026",
   countdownTarget: "2026-07-18T17:00:00",
 
   /* --- MÚSICA DE FONDO --- */
@@ -23,10 +24,10 @@ const WEDDING_CONFIG = {
 
   parents: {
     groomLabel: "Madre del Novio",
-    groomMother: "Valeriana Menacho C. (†)",
+    groomMother: "Valeriana Menacho C. †", // Cruz de respeto limpia y elegante
 
     brideLabel: "Padres de la Novia",
-    brideFather: "Benedicto Duran (†)",
+    brideFather: "Benedicto Duran †",
     brideMother: "Eva Choque vda. de Duran",
   },
 
@@ -40,7 +41,7 @@ const WEDDING_CONFIG = {
           place: "Iglesia San Lázaro",
           description:
             "La emotiva ceremonia en donde uniremos nuestras almas en matrimonio sagrado.",
-          coords: "-19.050887745631307, -65.25451139313107", // Coordenadas exactas reales de la Iglesia San Lázaro
+          coords: "-19.050887745631307, -65.25451139313107",
           calendarDateStart: "20260718T170000",
           calendarDateEnd: "20260718T183000",
         },
@@ -50,9 +51,9 @@ const WEDDING_CONFIG = {
           place: "Salón La Plata (Calle Perú #222)",
           description:
             "Los esperamos para celebrar con alegría, un gran brindis y el primer baile de esposos.",
-          coords: "-19.03299363090343, -65.24742848357239", // Coordenadas aproximadas de la Calle Perú (puedes ajustarla si tienes el punto exacto)
+          coords: "-19.03299363090343, -65.24742848357239",
           calendarDateStart: "20260718T190000",
-          calendarDateEnd: "20260719T020000", // Termina en la madrugada del día siguiente
+          calendarDateEnd: "20260719T020000",
         },
       ],
     },
@@ -65,7 +66,7 @@ const WEDDING_CONFIG = {
           place: "Capilla Virgen de Guadalupe",
           description:
             "Una sentida liturgia de acción de gracias por nuestra salud y bienestar familiar.",
-          coords: "-19.048997231833546, -65.25983048544661", // Coordenadas reales de la Capilla junto a la Catedral de Sucre
+          coords: "-19.048997231833546, -65.25983048544661",
           calendarDateStart: "20260719T103000",
           calendarDateEnd: "20260719T113000",
         },
@@ -77,7 +78,22 @@ const WEDDING_CONFIG = {
             "Cerramos este fin de semana de fiesta con banquete tradicional y baile.",
           coords: "-19.03299363090343, -65.24742848357239",
           calendarDateStart: "20260719T123000",
-          calendarDateEnd: "20260719T200000",
+          calendarDateEnd: "20260719T230000",
+        },
+      ],
+    },
+    {
+      dayTitle: "Lunes 20 de Julio",
+      events: [
+        {
+          time: "15:30",
+          title: "Challa de Regalos",
+          place: "Salón La Plata (Calle Perú #222)",
+          description:
+            "Acompáñanos a realizar la tradicional ch'alla y apertura de regalos, compartiendo un brindis de prosperidad para nuestro nuevo hogar.",
+          coords: "-19.03299363090343, -65.24742848357239",
+          calendarDateStart: "20260720T153000",
+          calendarDateEnd: "20260720T230000",
         },
       ],
     },
@@ -93,7 +109,7 @@ const WEDDING_CONFIG = {
     },
     {
       group: "Padrinos de Misa de Salud",
-      members: ["Maria Luisa Duran Choque", "Dimar Fabian Grageda"],
+      members: ["Maria Luisa Duran Choque", "Dimar Fabian Grageda (hijo)"],
     },
   ],
 
