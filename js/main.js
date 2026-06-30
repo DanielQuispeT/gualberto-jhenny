@@ -18,19 +18,23 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("blessing-text").textContent = cfg.blessingQuote;
 
   // 3. Padres (Estructurado de manera asimétrica)
+  const formatParentName = (name) => {
+    return name.replace("†", '<span class="cross">†</span>');
+  };
+
   const parentsContainer = document.getElementById("parents-container");
   parentsContainer.innerHTML = `
-    <div class="parents-column reveal">
+     <div class="parents-column reveal">
       <span class="overline">${cfg.parents.groomLabel}</span>
-      <p class="parent-name">${cfg.parents.groomMother}</p>
+      <p class="parent-name">${formatParentName(cfg.parents.groomMother)}</p>
     </div>
     <div class="parents-divider reveal">
       <div class="gold-ornament" style="font-size: 1rem;">✦</div>
     </div>
     <div class="parents-column reveal">
       <span class="overline">${cfg.parents.brideLabel}</span>
-      <p class="parent-name">${cfg.parents.brideFather}</p>
-      <p class="parent-name">${cfg.parents.brideMother}</p>
+      <p class="parent-name">${formatParentName(cfg.parents.brideFather)}</p>
+      <p class="parent-name">${formatParentName(cfg.parents.brideMother)}</p>
     </div>
   `;
 

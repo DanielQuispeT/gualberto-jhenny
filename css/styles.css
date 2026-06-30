@@ -301,9 +301,9 @@ body {
   margin-bottom: 0.5rem;
 }
 .parent-name .cross {
-  font-size: 1rem;
+  font-size: 2rem;
   color: var(--c-gold-dark);
-  vertical-align: super;
+  vertical-align: middle;
   margin-left: 2px;
 }
 
